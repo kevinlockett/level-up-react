@@ -6,8 +6,16 @@ export const NavBar = () => {
 	const history = useHistory()
 	return (
 		<ul className='navbar'>
-			<li className='navbar__item'>Navigation link</li>
-			<li className='navbar__item'>Navigation link</li>
+			<li className='navbar__item'>
+				<Link className='navbar__link' to='/'>
+					Home
+				</Link>
+			</li>
+			<li className='navbar__item'>
+				<Link className='navbar__link' to='/events'>
+					Events
+				</Link>
+			</li>
 			<li className='navbar__item'>Navigation link</li>
 			{localStorage.getItem("lu_token") !== null ? (
 				<li className='nav-item'>

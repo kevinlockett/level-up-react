@@ -1,8 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { getEvents } from "./EventManager.js"
+import "./Event.css"
 
 export const EventList = (props) => {
 	const [events, setEvents] = useState([])
+	const history = useHistory()
 
 	useEffect(() => {
 		getEvents().then((data) => setEvents(data))
@@ -25,6 +28,13 @@ export const EventList = (props) => {
 					</section>
 				)
 			})}
+			<button
+				className='btn btn-2 btn-sep icon-create'
+				onClick={() => {
+					history.push({ pathname: "/events/new" })
+				}}>
+				Register New Game
+			</button>
 		</article>
 	)
 }
