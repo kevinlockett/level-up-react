@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { getGames } from "./GameManager.js"
+import "./Game.css"
 
 export const GameList = (props) => {
 	const [games, setGames] = useState([])
+	const history = useHistory()
 
 	useEffect(() => {
 		getGames().then((data) => setGames(data))
@@ -25,6 +28,13 @@ export const GameList = (props) => {
 					</section>
 				)
 			})}
+			<button
+				className='btn btn-2 btn-sep icon-create'
+				onClick={() => {
+					history.push({ pathname: "/games/new" })
+				}}>
+				Register New Game
+			</button>
 		</article>
 	)
 }

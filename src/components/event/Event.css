@@ -1,0 +1,7 @@
+.event {
+	padding-top: 1rem;
+}
+
+.event__description {
+	font-weight: 700;
+}
