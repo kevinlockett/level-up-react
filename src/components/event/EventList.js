@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { getEvents } from "./EventManager.js"
+import { getEvents, deleteEvent } from "./EventManager.js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashCan, faPencil } from "@fortawesome/free-solid-svg-icons"
 import "./Event.css"
 
 export const EventList = (props) => {
 	const [events, setEvents] = useState([])
 	const history = useHistory()
 
+	const pencil = <FontAwesomeIcon icon={faPencil} />
+	const trashCan = <FontAwesomeIcon icon={faTrashCan} />
+
+	const getAllEvents = () =>
+		getEvents().then((eventData) => setEvents(eventData))
+
 	useEffect(() => {
-		getEvents().then((data) => setEvents(data))
+		getAllEvents()
 	}, [])
 
 	return (
@@ -24,6 +32,20 @@ export const EventList = (props) => {
 						</div>
 						<div className='event__game'>
 							Game is {event.game.title}
+						</div>
+						<div>
+							<Link
+								className='btn-icon'
+								to={`/events/${event.id}/update`}>
+								{pencil}
+							</Link>
+							<button
+								className='btn-icon'
+								onClick={() => {
+									deleteEvent(event.id).then(getAllEvents)
+								}}>
+								{trashCan}
+							</button>
 						</div>
 					</section>
 				)
