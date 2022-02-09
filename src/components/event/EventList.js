@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { getEvents, deleteEvent } from "./EventManager.js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan, faPencil } from "@fortawesome/free-solid-svg-icons"
@@ -55,7 +55,7 @@ export const EventList = (props) => {
 				onClick={() => {
 					history.push({ pathname: "/events/new" })
 				}}>
-				Register New Game
+				Schedule New Event
 			</button>
 		</article>
 	)
