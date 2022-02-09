@@ -197,6 +197,15 @@ code {
 	width: 60px;
 }
 
+.btn-icon {
+	border: none;
+	background: none;
+	cursor: pointer;
+	display: inline-block;
+	margin: 0 1rem;
+	position: relative;
+}
+
 /* Icons */
 
 .icon-send:before {
