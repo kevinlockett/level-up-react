@@ -21,10 +21,18 @@ export const UpdateEvent = () => {
 	}, [])
 
 	useEffect(() => {
-		getEvent(eventId).then((eventData) => {
-			setCurrentEvent(eventData)
-		})
-	}, [])
+		// If you don't want to use a different serializer with no depth,
+		// unpack the eventData and set the currentEvent fields individually
+		getEvent(eventId).then((eventData) =>
+			setCurrentEvent({
+				id: eventData.id,
+				date: eventData.date,
+				time: eventData.time,
+				description: eventData.description,
+				game: eventData.game.id,
+			})
+		)
+	}, [eventId])
 
 	const changeEventState = (domEvent) => {
 		const copy = { ...currentEvent }
